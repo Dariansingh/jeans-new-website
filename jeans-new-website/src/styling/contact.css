@@ -1,0 +1,10 @@
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+.contact-header {
+    text-align: center;
+}

@@ -1,0 +1,10 @@
+.services-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+.services-header {
+    text-align: center;
+}

@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './App.css';
+import React from 'react';
+import { Routes,
+  Route,
+  Link } from 'react-router-dom';
+import "./styling/app.css";
+import About from "./pages/about.js";
+import Contact from "./pages/contact.js";
+import Services from "./pages/services.js";
+import { useLocation } from 'react-router-dom';
 
-function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
+export default function App() {
+  const location = useLocation();
+  const showHeader = !['/about', '/contact', '/services'].includes(location.pathname);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div
-          className={`sidebar-container ${showSidebar ? 'expanded' : ''}`}
-          onMouseEnter={() => setShowSidebar(true)}
-          onMouseLeave={() => setShowSidebar(false)}
-        >
-          <div className="sidebar">
-            <Link to="/services">Services</Link>
-            <Link to="/contact">Contact Us</Link>
-            <Link to="/about">About Us</Link>
+      {showHeader && (
+        <header className="App-header">
+          <div className="menu-container">
+            <div className="menu-item">
+              <Link to="/services">Services</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/contact">Contact Us</Link>
+            </div>
+            <div className="menu-item">
+              <Link to="/about">About Us</Link>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
+      )}
+      <div className="tabcontent">
+        <Routes>
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/services" element={<Services />} />
+        </Routes>
+      </div>
     </div>
   );
 }
 
-export default App;

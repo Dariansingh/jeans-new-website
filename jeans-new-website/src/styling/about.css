@@ -1,0 +1,10 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+  
+.about-header {
+    text-align: center;
+}
